@@ -9,4 +9,4 @@ chessBoard.move('b2',b3') // 'b2' - source, 'b3' - destination
 
 ![Board](/BoardSetup.jpg?raw=true "Title")
 
-![Board](WalnetBoard.jpg?raw=true "Title")
+![Board](WalnutBoard.jpg?raw=true "Title")
