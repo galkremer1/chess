@@ -221,4 +221,7 @@ class Chess {
         console.log(chessBoard.move('d3','d4'));
         chessBoard.move('e3','g5');
         console.log(chessBoard.move('a3','h3'));
+        console.log(chessBoard.move('h3','h7'));
+        console.log(chessBoard.move('h7','h6'));
+        console.log(chessBoard.move('g7','h6'));
   }
