@@ -11,15 +11,14 @@ function checkIfPathIsClear(startIndex, xDiff, yDiff, chessBoard) {
 }
 
 class ChessPiece {
-    constructor(color, type) {
+    constructor(color) {
         this.color = color;
-        this.type =  type;
       }
 }
 
 class King extends ChessPiece {
     constructor(color) {
-        super(color, 'King');
+        super(color);
     }
 
     isValidStep(startIndex, destinationIndex) {
@@ -31,7 +30,7 @@ class King extends ChessPiece {
 
 class Queen extends ChessPiece {
     constructor(color) {
-        super(color, 'Queen');
+        super(color);
     }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
@@ -47,7 +46,7 @@ class Queen extends ChessPiece {
 
 class Rook extends ChessPiece {
     constructor(color) {
-        super(color, 'Rook');
+        super(color);
     }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
@@ -63,11 +62,11 @@ class Rook extends ChessPiece {
 
 class Pawn extends ChessPiece {
     constructor(color) {
-        super(color, 'Pawn');
+        super(color);
     }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
-        const direction = (this.color == 'black' ? -1 : '1');
+        const direction = (this.color == 'black' ? -1 : 1);
         const xDiff = destinationIndex.x - startIndex.x;
         const yDiff = destinationIndex.y - startIndex.y;
         if ( xDiff == 0 && yDiff*direction == 1 ) {
@@ -82,7 +81,7 @@ class Pawn extends ChessPiece {
 
 class Bishop extends ChessPiece {
     constructor(color) {
-        super(color, 'Bishop');
+        super(color);
     }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
@@ -98,7 +97,7 @@ class Bishop extends ChessPiece {
 
 class Knight extends ChessPiece {
     constructor(color) {
-        super(color, 'Knight');
+        super(color);
     }
 
     isValidStep(startIndex, destinationIndex) {
