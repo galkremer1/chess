@@ -72,7 +72,7 @@ class Pawn extends ChessPiece {
         if ( xDiff == 0 && yDiff*direction == 1 ) {
             return !chessBoard[destinationIndex.y][destinationIndex.x]; //Destination should be free
         } else if ( Math.abs(xDiff) == 1 && yDiff*direction == 1 ) {
-            return chessBoard[destinationIndex.y][destinationIndex.x]; //Destination should not be free
+            return !!chessBoard[destinationIndex.y][destinationIndex.x]; //Destination should not be free
         } else {
             return false;
         }
