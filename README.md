@@ -2,7 +2,7 @@
 
 A simple tool for generating a chess board and validate moves. 
 
-* This tool does not have a game management system, therefor it does 
+* This tool does not have a game management system, therefore it does 
 not check who's turn is it. 
 Castling, pawn promotion, pawn two-square advance, chess mate and etc. are not supported (yet).
 
