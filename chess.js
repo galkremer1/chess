@@ -17,9 +17,6 @@ class ChessPiece {
 }
 
 class King extends ChessPiece {
-    constructor(color) {
-        super(color);
-    }
 
     isValidStep(startIndex, destinationIndex) {
         const xDiff = Math.abs(destinationIndex.x - startIndex.x);
@@ -29,14 +26,11 @@ class King extends ChessPiece {
 }
 
 class Queen extends ChessPiece {
-    constructor(color) {
-        super(color);
-    }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
         const xDiff = destinationIndex.x - startIndex.x;
         const yDiff = destinationIndex.y - startIndex.y;
-        if ( Math.abs(xDiff) == Math.abs(yDiff) || xDiff == 0 || yDiff == 0 ) {
+        if ( Math.abs(xDiff) === Math.abs(yDiff) || xDiff === 0 || yDiff === 0 ) {
             return checkIfPathIsClear(startIndex,xDiff,yDiff,chessBoard);
         } else {
             return false;
@@ -45,14 +39,11 @@ class Queen extends ChessPiece {
 }
 
 class Rook extends ChessPiece {
-    constructor(color) {
-        super(color);
-    }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
         const xDiff = destinationIndex.x - startIndex.x;
         const yDiff = destinationIndex.y - startIndex.y;
-        if ( xDiff == 0 || yDiff == 0 ) {
+        if ( xDiff === 0 || yDiff === 0 ) {
             return checkIfPathIsClear(startIndex,xDiff,yDiff,chessBoard);
         } else {
             return false;
@@ -61,17 +52,14 @@ class Rook extends ChessPiece {
 }
 
 class Pawn extends ChessPiece {
-    constructor(color) {
-        super(color);
-    }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
-        const direction = (this.color == 'black' ? -1 : 1);
+        const direction = (this.color === 'black' ? -1 : 1);
         const xDiff = destinationIndex.x - startIndex.x;
         const yDiff = destinationIndex.y - startIndex.y;
-        if ( xDiff == 0 && yDiff*direction == 1 ) {
+        if ( xDiff === 0 && yDiff*direction === 1 ) {
             return !chessBoard[destinationIndex.y][destinationIndex.x]; //Destination should be free
-        } else if ( Math.abs(xDiff) == 1 && yDiff*direction == 1 ) {
+        } else if ( Math.abs(xDiff) === 1 && yDiff*direction === 1 ) {
             return !!chessBoard[destinationIndex.y][destinationIndex.x]; //Destination should not be free
         } else {
             return false;
@@ -80,14 +68,11 @@ class Pawn extends ChessPiece {
 }
 
 class Bishop extends ChessPiece {
-    constructor(color) {
-        super(color);
-    }
 
     isValidStep(startIndex, destinationIndex, chessBoard) {
         const xDiff = destinationIndex.x - startIndex.x;
         const yDiff = destinationIndex.y - startIndex.y;
-        if (Math.abs(xDiff) == Math.abs(yDiff)) {
+        if (Math.abs(xDiff) === Math.abs(yDiff)) {
             return checkIfPathIsClear(startIndex,xDiff,yDiff,chessBoard);
         } else {
             return false;
@@ -96,14 +81,10 @@ class Bishop extends ChessPiece {
 }
 
 class Knight extends ChessPiece {
-    constructor(color) {
-        super(color);
-    }
-
     isValidStep(startIndex, destinationIndex) {
         const xDiff = Math.abs(destinationIndex.x - startIndex.x);
         const yDiff = Math.abs(destinationIndex.y - startIndex.y);
-        return ( xDiff == 2 && yDiff == 1 || xDiff == 1 && yDiff == 2);  
+        return ( xDiff === 2 && yDiff === 1 || xDiff === 1 && yDiff === 2);  
     }
 }
 
@@ -116,22 +97,22 @@ function generateChessBoard() {
     }
     for (let i = 0; i < 8; i++) {
         chessBoard[i] = new Array(8);
-        if (i==1) {
+        if (i===1) {
             placePawns(chessBoard,i, 'white');
-        } else if(i==6) {
+        } else if(i===6) {
             placePawns(chessBoard,i, 'black');
-        } else if (i==0 || i==7) {
-            const color = (i==0 ? 'white':'black');
+        } else if (i===0 || i===7) {
+            const color = (i===0 ? 'white':'black');
             for (let j=0; j<8; j++) {
-                if (j==0 || j==7) {
+                if (j===0 || j===7) {
                     chessBoard[i][j] = new Rook(color);
-                } else if (j==1 || j==6) {
+                } else if (j===1 || j===6) {
                     chessBoard[i][j] = new Knight(color);
-                } else if (j==2 || j==5) {
+                } else if (j===2 || j===5) {
                     chessBoard[i][j] = new Bishop(color);
-                } else if (j==3) {
+                } else if (j===3) {
                     chessBoard[i][j] = new Queen(color);
-                } else if (j==4) {
+                } else if (j===4) {
                     chessBoard[i][j] = new King(color);
                 }
             }
@@ -151,7 +132,7 @@ function parseIndex(index) {
         'g': 6,
         'h': 7
     }
-    if (typeof(index) === 'string' && index.length == 2) {
+    if (typeof(index) === 'string' && index.length === 2) {
         const x = indexMap[index[0].toLowerCase()];
         const y = index.charCodeAt(1) - 49; // '0' = 48. Mapping: '1'-0, '2'-1...
         if (typeof(y) === 'number' && x<8 && x>=0 ) {
